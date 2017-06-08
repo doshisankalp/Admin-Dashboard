@@ -37,7 +37,7 @@
 
 
 <?php
-include("/connectdb.php");
+include("connectdb.php");
 if(isset($_POST['JobName'])) {
     $JobName = $_POST['JobName'];
     $Type = $_POST['Type'];
