@@ -28,14 +28,6 @@
 
 </p>
 
-
-<?php
-
-
-?>
-
-
-
 <?php
 include("connectdb.php");
 if(isset($_POST['JobName'])) {
