@@ -2,7 +2,7 @@
  * Created by omkar on 9/6/17.
  */
 
-var startindex=0,numrow=15;
+var startindex=0,numrow=10;
 
 function show(direction) {
     var xhttp;
@@ -21,7 +21,7 @@ function show(direction) {
 
     }
 
-    xhttp.open("POST", "display.php");
+    xhttp.open("POST", "./php/display.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('startindex=' + startindex + '&numrow=' + numrow);
 

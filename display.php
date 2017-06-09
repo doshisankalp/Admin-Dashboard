@@ -10,7 +10,7 @@
 <body>
 <form>
 
-    Enter Number of Rows:  <input type="number" name="numrow" id="numrow"><br>
+<!--    Enter Number of Rows:  <input type="number" name="numrow"><br>-->
 
     <button type="button" onclick="show(0)">Display</button><br/><br/>
 
