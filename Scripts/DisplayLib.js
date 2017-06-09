@@ -12,7 +12,7 @@ function show(direction) {
     } else if(direction==-1) {
         startindex=startindex-numrow;
     }
-    //document.getElementById("display").innerHTML ="Empty";
+
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -23,8 +23,6 @@ function show(direction) {
 
     xhttp.open("POST", "display.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // var str='index='+startindex+'&numrow='+numrow;
-    // alert(str);
-    xhttp.send('index=' + startindex + '&numrow=' + numrow);
+    xhttp.send('startindex=' + startindex + '&numrow=' + numrow);
 
 }

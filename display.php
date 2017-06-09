@@ -10,7 +10,7 @@ include("connectdb.php");
 $index=$_POST['startindex'];
 $numrow=$_POST['numrow'];
 
-$sqlquery = "select * from employees limit " . $index * $numrow . "," . $numrow;
+$sqlquery = "select * from employees limit " . $index . "," . $numrow;
 echo $sqlquery;
 
 if (!empty($conn)) {
