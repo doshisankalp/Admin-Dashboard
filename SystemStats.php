@@ -7,11 +7,11 @@
  */
 echo "<html>
 <head>
-    <meta http-equiv=\"refresh\" content=\"3\" >
+    <meta http-equiv=\"refresh\" content=\"1\" >
 
 </head>";
 
-echo "Server Memory Usage: ".get_server_cpu_usage(). "<br>";
+echo "Server Memory Usage: ".get_server_memory_usage(). "<br>";
 
 echo "Server CPU Usage: ".get_server_cpu_usage(). "<br>";
 
@@ -28,7 +28,7 @@ function get_server_memory_usage(){
     $mem = explode(" ", $free_arr[1]);
     $mem = array_filter($mem);
     $mem = array_merge($mem);
-    $memory_usage = $mem[2]/$mem[1]*100;
+    $memory_usage = ($mem[1]-$mem[6])/$mem[1]*100;
 
     return $memory_usage;
 }

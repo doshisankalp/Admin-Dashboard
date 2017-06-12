@@ -8,9 +8,8 @@
 include("connectdb.php");
 
 $emp_no=$_POST['emp_no'];
-$qText = $_POST['qText'];
 
-$sqlquery = "UPDATE employees SET $qText WHERE emp_no=$emp_no";
+$sqlquery = "DELETE FROM employees WHERE emp_no=$emp_no";
 
 if (!empty($conn)) {
     $result = mysqli_query($conn, $sqlquery);

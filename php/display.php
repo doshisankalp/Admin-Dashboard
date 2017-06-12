@@ -9,8 +9,17 @@ include("connectdb.php");
 
 $index=$_POST['startindex'];
 $numrow=$_POST['numrow'];
+$sq = "";
+$search = $_POST['searchQ'];
 
-$sqlquery = "select * from employees limit " . $index . "," . $numrow;
+if($_POST['searchQ']!=""){
+    $sq = "WHERE (first_name LIKE \"%$search%\")";
+    $sq .= " OR (last_name LIKE \"%$search%\")";
+    $sq .= " OR (emp_no LIKE \"%$search%\")";
+}
+
+$sqlquery = "select * from employees $sq limit $index,$numrow";
+
 
 if (!empty($conn)) {
     $result = mysqli_query($conn, $sqlquery);
@@ -18,13 +27,15 @@ if (!empty($conn)) {
 $count = mysqli_num_rows($result);
 
 if ($count > 0) {
-    echo "<table>";
+    $i=0;
+    $jsonrows->rows = array();
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        echo "<tr>";
-        echo "<td>" . $row["emp_no"] . "</td><td onclick='edit(this)'>" . $row["first_name"] . "</td><td onclick='edit(this)'>" . $row["last_name"] . "</td>";
-        echo "</tr>";
+        $temp->emp_no = $row["emp_no"];
+        $temp->first_name = $row["first_name"];
+        $temp->last_name = $row["last_name"];
+        array_push($jsonrows->rows,clone $temp);
     }
-    echo "</table>";
+    echo json_encode($jsonrows);
 } else {
-    echo "0 results";
+    echo "";
 }

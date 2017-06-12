@@ -1,35 +1,17 @@
+var x;
 
-function set(z) {
-    //HTTP Request for the same
-    var xhttp;
-
-    if(direction==1) {
-        startindex=startindex+numrow;
-    } else if(direction==-1) {
-        startindex=startindex-numrow;
+function set(z,iniText) {
+    x = z.parentElement;
+    var id = x.id.substr(0,x.id.indexOf("_"));
+    var s = x.id.substr(x.id.indexOf("_")+1)+"=\"" + z.value.toString()+"\"";
+    if(z.value != iniText){
+        updateTable(document.getElementById(id+"_emp_no").innerText,s);
     }
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("display").innerHTML = this.responseText;
-        }
-
-    }
-
-    xhttp.open("POST", "./php/update.php");
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('startindex=' + startindex + '&numrow=' + numrow);
-
-
-
-
-    z.parentElement.onclick = function (z) {
-        edit(z.parentElement);
-    }
+    z.parentElement.onclick = (function(n){return function(){edit(n);};})(x);
     z.parentElement.innerHTML = z.value;
 }
 function edit(z){
-    z.innerHTML = "<input onchange='set(this)' type='text' value='"+z.innerText+"'>";
+    z.innerHTML = "<input onblur='set(this,\""+z.innerText+"\")' type='text' value='"+z.innerText+"'>";
+    z.firstChild.focus();
     z.onclick = "";
 }
