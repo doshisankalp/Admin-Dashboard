@@ -55,7 +55,7 @@
                 <div class="col l4 offset-l2 s12">
 
                     <ul>
-                        <li><a class="fut" href="#!">OmkarNathSingh © 2017 Copyright</a></li>
+                        <li><a class="fut" href="#!">"OmkarNathSingh © 2017 Copyright"</a></li>
 
                     </ul>
                 </div>
