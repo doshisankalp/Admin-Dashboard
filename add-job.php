@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add a New Job</title>
-
-</head>
-
-<body>
-<p>
-
 <form method="post" >
     Enter Job Name: <input type="text" name="JobName"> <br>
     Enter Job Type: <select name="Type">
@@ -25,8 +14,6 @@
     <input type="submit" value="Add into Database" ><br>
 
 </form>
-
-</p>
 
 <?php
 include("connectdb.php");
