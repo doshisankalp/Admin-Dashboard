@@ -1,19 +1,22 @@
-<?php
+
 /**
  * Created by PhpStorm.
  * User: omkar
  * Date: 8/6/17
  * Time: 5:10 PM
  */
-echo "<html>
+<html>
 <head>
-    <meta http-equiv=\"refresh\" content=\"1\" >
+    <meta http-equiv="refresh" content="1">
 
-</head>";
-include("./header.php");
-include("./side-navigation.php");
-echo "<div style=\"margin-left:25%\">";
+</head>
+<header> <?php include("./header.php"); ?> </header>
+<nav><?php include("./navigation.php"); ?></nav>
+<nav><?php include("./side-navigation.php"); ?></nav>
 
+<div style="margin-left:25%">
+
+<?php
 echo "Server Memory Usage: ".get_server_memory_usage(). "<br>";
 
 echo "Server CPU Usage: ".get_server_cpu_usage(). "<br>";
@@ -21,7 +24,7 @@ echo "Server CPU Usage: ".get_server_cpu_usage(). "<br>";
 echo "Memory Usage: ". memory_get_usage() . "<br>";
 
 
-echo "</html>";
+
 
 function get_server_memory_usage(){
 
@@ -42,3 +45,6 @@ function get_server_cpu_usage(){
     return $load[2];
 
 }
+?>
+
+</div>

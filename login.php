@@ -1,7 +1,9 @@
 <?php
-
 session_start();
+session_unset();
+include("./php/login.php");
 ?>
+
 <head>
     <title>Login - Neeti Solutions</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -71,7 +73,7 @@ session_start();
             .modal-content {
                 background-color: #fefefe;
                 margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-                border: 1px solid #888;
+                border: 0px solid #888;
                 width: 80%; /* Could be more or less, depending on screen size */
             }
 
@@ -104,15 +106,20 @@ session_start();
         </style>
 
         <?php
-        echo $_SESSION['forgot_password'];
+        if(isset($_POST['email'])){
+            $login_result=login();
+            if($login_result==0)
+                header("location: ./display.php");
+            else{
+                echo "<br> <h3>Error: Check Email and password!!!</h3>";
+            }
+        }
         ?>
         <br>
 
-        <?php
-        echo $_SESSION['error'];
-        ?>
 
-        <form class="modal-content animate" action="./php/login.php" method="post">
+
+        <form class="modal-content animate" method="post">
             <h2>LOGIN</h2>
             <label><b>EMAIL ID</b></label>
             <input type="email" placeholder="Enter Email ID" name="email" required>

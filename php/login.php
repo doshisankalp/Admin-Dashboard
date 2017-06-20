@@ -1,36 +1,36 @@
 <?php
-include("connectdb.php");
+
 session_start();
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // username and password sent from form
+/**
+ * @return int
+ */
+function login()
+{   include("connectdb.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // username and password sent from form
 
-    $myusername = mysqli_real_escape_string($conn,$_POST['email']);
-    $mypassword = mysqli_real_escape_string($conn,$_POST['password']);
+        if (!empty($conn)) {
+            $myusername = mysqli_real_escape_string($conn, $_POST['email']);
+            $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
+        }
 
+        $sql = "SELECT user.id FROM employees.user WHERE user.email = '$myusername' and user.password = password('$mypassword')";
+        $result = mysqli_query($conn, $sql);
+        $count = mysqli_num_rows($result);
 
-    $sql = "SELECT id FROM user WHERE email = '$myusername' and password = password('$mypassword')";
+        // If result matched $myusername and $mypassword, table row must be 1 row
+        mysqli_close($conn);
+        if ($count == 1) {
 
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $active = $row['active'];
+            $_SESSION['login_user'] = $myusername;
+            return(0);
 
+        } else {
 
-    $count = mysqli_num_rows($result);
+            return(1);
 
-    // If result matched $myusername and $mypassword, table row must be 1 row
-    mysqli_close($conn);
-    if($count == 1) {
-
-        $_SESSION['login_user'] = $myusername;
-        header("location:../display.php");
-
-    }else {
-
-        $_SESSION['error'] = "Invalid Username Or Password Combination..." ;
-        header("location:./login.php");
-
+        }
     }
+    return 0;
 }
-
-?>

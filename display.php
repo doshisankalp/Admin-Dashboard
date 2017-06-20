@@ -7,15 +7,18 @@
     <script language="JavaScript" src="./js/EditLib.js"></script>
     <script language="JavaScript" src="./js/UpdateLib.js"></script>
 </head>
-<body>
+<body style="margin: 0px;">
 <header> <?php include("./header.php"); ?> </header>
+<nav><?php include("./navigation.php"); ?></nav>
 <nav><?php include("./side-navigation.php"); ?></nav>
 <div style="margin-left:25%">
 
 
 <div id="insert" style="display:none;">
-<script>toggleVisibility(document.getElementById('main-form')); </script>
+
     <?php include("./add-job.php"); ?>
+    <br>
+    <button type="button" onclick="toggleVisibility(document.getElementById('insert'));toggleVisibility(document.getElementById('main-form'));">Cancel</button>
 </div>
 
 <div id="main-form" style="display:block">
@@ -23,7 +26,7 @@
     <input type="number" id="numrow" placeholder="Number of rows">
     <button type="button" onclick="show(0)">Display</button><br/><br/>
 
-    <button type="button" onclick="toggleVisibility(document.getElementById('insert'));"  >Insert / Add Data</button><br/><br/>
+    <button type="button" onclick="toggleVisibility(document.getElementById('insert'));toggleVisibility(document.getElementById('main-form'));"  >Insert / Add Data</button><br/><br/>
 
     <button type="button" onclick="show(-1)">Previous</button>
     <button type="button" onclick="show(1)">Next</button>
@@ -33,6 +36,8 @@
 </div>
 
 <div id="display"></div>
+
 </div>
+<footer> <?php include("./footer.php"); ?> </footer>
 </body>
 </html>
