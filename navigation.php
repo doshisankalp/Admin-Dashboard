@@ -39,9 +39,9 @@
 <ul>
     <li><a class="active" href="#home">Home</a></li>
     <li><a href="#news">News</a></li>
-    <li><a href="#"><?php
+    <li style="float:right"><a href="#"><?php
             include_once("./php/session.php");
-    ?> </a></li>
+    ?> Logged In User</a></li>
     <li style="float:right"><a href="./logout.php">Logout</a></li>
 </ul>
 </div>

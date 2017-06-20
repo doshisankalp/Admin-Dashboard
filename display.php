@@ -9,8 +9,8 @@
 </head>
 <body style="margin: 0px;">
 <header> <?php include("./header.php"); ?> </header>
-<nav><?php include("./navigation.php"); ?></nav>
-<nav><?php include("./side-navigation.php"); ?></nav>
+<div><?php include("./navigation.php"); ?></div>
+<div><?php include("./side-navigation.php"); ?></div>
 <div style="margin-left:25%">
 
 

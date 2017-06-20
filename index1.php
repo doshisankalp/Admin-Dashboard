@@ -9,8 +9,7 @@
 
 
 <header> <?php include("./header.php"); ?> </header>
-<!--<nav>--><?php //include("./navigation.php"); ?><!-- </nav>-->
-<nav><?php include("./side-navigation.php"); ?></nav>
+<div><?php include("./side-navigation.php"); ?></div>
     <div style="margin-left:25%">
 
 <p align="center">
