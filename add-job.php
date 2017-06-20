@@ -28,5 +28,3 @@ if(isset($_POST['JobName'])) {
     echo $sqlquery;
 }
 ?>
-</body>
-</html>

@@ -47,7 +47,7 @@
     }
 </style>
 
-<footer class="page-footer">
+<div class="page-footer">
     <strong>
         <div class="container">
             <div class="row">
@@ -55,11 +55,11 @@
                 <div class="col l4 offset-l2 s12">
 
                     <ul>
-                        <li><a class="fut" href="#!">"OmkarNathSingh © 2017 Copyright"</a></li>
+                        <li><a class="fut" href="#!">"Neeti Solutions © 2017 Copyright"</a></li>
 
                     </ul>
                 </div>
             </div>
         </div>
     </strong>
-</footer>
+</div>

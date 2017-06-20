@@ -10,6 +10,9 @@ echo "<html>
     <meta http-equiv=\"refresh\" content=\"1\" >
 
 </head>";
+include("./header.php");
+include("./side-navigation.php");
+echo "<div style=\"margin-left:25%\">";
 
 echo "Server Memory Usage: ".get_server_memory_usage(). "<br>";
 

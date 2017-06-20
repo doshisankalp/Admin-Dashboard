@@ -8,12 +8,14 @@
     <script language="JavaScript" src="./js/UpdateLib.js"></script>
 </head>
 <body>
+<header> <?php include("./header.php"); ?> </header>
+<nav><?php include("./side-navigation.php"); ?></nav>
+<div style="margin-left:25%">
+
 
 <div id="insert" style="display:none;">
 <script>toggleVisibility(document.getElementById('main-form')); </script>
-    <p align="center">
-        <?php include("./add-job.php"); ?>
-    </p>
+    <?php include("./add-job.php"); ?>
 </div>
 
 <div id="main-form" style="display:block">
@@ -31,6 +33,6 @@
 </div>
 
 <div id="display"></div>
-
+</div>
 </body>
 </html>
