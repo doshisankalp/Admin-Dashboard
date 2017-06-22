@@ -24,7 +24,9 @@ function show(direction) {
     if(direction==1) {
         startindex=startindex+numrow;
     } else if(direction==-1) {
-        startindex=startindex-numrow;
+        if(startindex>=0) {
+            startindex = startindex - numrow;
+        }
     }
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {

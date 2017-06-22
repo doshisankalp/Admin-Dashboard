@@ -1,10 +1,3 @@
-
-/**
- * Created by PhpStorm.
- * User: omkar
- * Date: 8/6/17
- * Time: 5:10 PM
- */
 <html>
 <head>
     <meta http-equiv="refresh" content="1">

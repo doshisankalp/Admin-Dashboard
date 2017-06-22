@@ -25,6 +25,6 @@ if(isset($_POST['JobName'])) {
     $Qualification = $_POST['Qualification'];
     $sqlquery = "Insert into RealLives.Jobs VALUE (NULL ,'$JobName','$Type','$Description','$Salary','$Qualification')";
 
-    echo $sqlquery;
+    echo "Added into Database";
 }
 ?>
