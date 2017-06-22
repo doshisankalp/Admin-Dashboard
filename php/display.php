@@ -18,7 +18,7 @@ if($_POST['searchQ']!=""){
     $sq .= " OR (emp_no LIKE \"%$search%\")";
 }
 
-$sqlquery = "select * from employees $sq limit $index,$numrow";
+$sqlquery = "select * from language $sq limit $index,$numrow";
 
 
 if (!empty($conn)) {

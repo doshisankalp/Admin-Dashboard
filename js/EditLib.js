@@ -5,7 +5,7 @@ function set(z,iniText) {
     var id = x.id.substr(0,x.id.indexOf("_"));
     var s = x.id.substr(x.id.indexOf("_")+1)+"=\"" + z.value.toString()+"\"";
     if(z.value != iniText){
-        updateTable(document.getElementById(id+"_emp_no").innerText,s);
+        updateTable(x.parentElement.firstChild.innerText,s,x.parentElement.id);
     }
     z.parentElement.onclick = (function(n){return function(){edit(n);};})(x);
     z.parentElement.innerHTML = z.value;

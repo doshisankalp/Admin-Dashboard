@@ -22,6 +22,12 @@
 </div>
 
 <div id="main-form" style="display:block">
+
+    <select onchange="settablename(this.value)">
+        <option selected>Select Table</option>
+        <option value="language">Language</option>
+        <option value="city">City</option>
+    </select>
 <form>
     <input type="number" id="numrow" placeholder="Number of rows">
     <button type="button" onclick="show(0)">Display</button><br/><br/>

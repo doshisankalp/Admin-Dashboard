@@ -7,10 +7,12 @@
  */
 include("connectdb.php");
 
-$emp_no=$_POST['emp_no'];
+$tblnm = $_POST['tblnm'];
+$val=$_POST['val'];
 $qText = $_POST['qText'];
+$pkm = $_POST['pkm'];
 
-$sqlquery = "UPDATE employees SET $qText WHERE emp_no=$emp_no";
+$sqlquery = "UPDATE $tblnm SET $qText WHERE $pkm=$val";
 
 if (!empty($conn)) {
     $result = mysqli_query($conn, $sqlquery);

@@ -1,8 +1,8 @@
 /**
  * Created by omkar on 9/6/17.
  */
-
-function updateTable(emp_no,qText) {
+importScripts("DisplayLib");
+function updateTable(emp_no,qText,primaryName) {
 
     var xhttp;
 
@@ -15,13 +15,14 @@ function updateTable(emp_no,qText) {
 
     xhttp.open("POST", "./php/update.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('emp_no=' + emp_no+'&qText='+qText);
-    //+ '&first_name=' + first_name+'&last_name'+last_name
+    xhttp.send("tblnm="+tablename+"&pkm="+primaryName+'&val=' + emp_no+'&qText='+qText);
+
 
 }
 
-function deleteRow(i) {
-    var emp_no = document.getElementById(i+"_emp_no").innerText;
+function deleteRow(i,z){
+    alert(z);
+    var emp_no = document.getElementById(i+"_"+z).innerText;
 
     var xhttp;
 
@@ -34,6 +35,7 @@ function deleteRow(i) {
 
     xhttp.open("POST", "./php/delete.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('emp_no=' + emp_no);
+    alert(emp_no+z+tablename);
+    xhttp.send('emp_no=' + emp_no+'&pk='+z+'&tbln='+tablename);
     show(0);
 }

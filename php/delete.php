@@ -8,8 +8,10 @@
 include("connectdb.php");
 
 $emp_no=$_POST['emp_no'];
+$pkm = $_POST['pk'];
+$tblnm = $_POST['tbln'];
 
-$sqlquery = "DELETE FROM employees WHERE emp_no=$emp_no";
+$sqlquery = "DELETE FROM $tblnm WHERE $pkm=$emp_no";
 
 if (!empty($conn)) {
     $result = mysqli_query($conn, $sqlquery);
