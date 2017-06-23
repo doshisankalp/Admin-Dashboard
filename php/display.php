@@ -1,41 +1,52 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: omkar
- * Date: 9/6/17
- * Time: 2:08 PM
- */
+//ini_set('display_errors', 1);
 include("connectdb.php");
+
+$tablename=$_POST['tablename'];
 
 $index=$_POST['startindex'];
 $numrow=$_POST['numrow'];
 $sq = "";
 $search = $_POST['searchQ'];
 
+$sqlquery1="SHOW COLUMNS FROM $tablename";
+$result1 = $conn->query($sqlquery1);
+while($row = $result1->fetch_assoc()) {
+    $columns[] = $row['Field'];
+}
+
+
+
 if($_POST['searchQ']!=""){
-    $sq = "WHERE (first_name LIKE \"%$search%\")";
-    $sq .= " OR (last_name LIKE \"%$search%\")";
-    $sq .= " OR (emp_no LIKE \"%$search%\")";
+    $i=1;
+    $sq = "WHERE ($columns[0] LIKE \"%$search%\")";
+
+    while ($i < $result1->num_rows) {
+        $sq .= " OR ($columns[$i] LIKE \"%$search%\")";
+        $i++;
+    }
 }
 
-$sqlquery = "select * from language $sq limit $index,$numrow";
+$sqlquery = "select * from $tablename $sq limit $index,$numrow";
 
-
-if (!empty($conn)) {
-    $result = mysqli_query($conn, $sqlquery);
-}
-$count = mysqli_num_rows($result);
-
+$result = $conn->query($sqlquery);
+$count = $result->num_rows;
+$jsonsend=array();
 if ($count > 0) {
-    $i=0;
+
     $jsonrows->rows = array();
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $temp->emp_no = $row["emp_no"];
-        $temp->first_name = $row["first_name"];
-        $temp->last_name = $row["last_name"];
-        array_push($jsonrows->rows,clone $temp);
+        $j = 0;
+        $temp = array();
+        while ($j < count($row)) {
+            array_push($temp,$row[$columns[$j]]);
+            $j++;
+        }
+        array_push($jsonrows->rows,$temp);
     }
-    echo json_encode($jsonrows);
+    array_push($jsonsend,$columns);
+    array_push($jsonsend,$jsonrows);
+    echo json_encode($jsonsend);
 } else {
     echo "";
 }

@@ -25,8 +25,14 @@
 
     <select onchange="settablename(this.value)">
         <option selected>Select Table</option>
-        <option value="language">Language</option>
+        <option value="businesses">Businesses</option>
         <option value="city">City</option>
+        <option value="jobs">Jobs</option>
+        <option value="language">Language</option>
+        <option value="name_group">Name Group</option>
+        <option value="names">Names</option>
+        <option value="religion">Religion</option>
+        <option value="world">World</option>
     </select>
 <form>
     <input type="number" id="numrow" placeholder="Number of rows">

@@ -58,7 +58,7 @@ function show(direction) {
 
     }
 
-    xhttp.open("POST", "./php/trial.php");
+    xhttp.open("POST", "./php/display.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('tablename='+tablename+'&startindex=' + startindex + '&numrow=' + numrow + '&searchQ='+searching);
 
