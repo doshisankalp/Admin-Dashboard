@@ -13,7 +13,8 @@ $result1 = $conn->query($sqlquery1);
 
 while($row = $result1->fetch_assoc()) {
     $columns[] = $row['Field'];
-    $value[]=$_POST[$row['Field']];
+
+    $value[]=addslashes($_POST[$row['Field']]);
 }
 
 $sqlquery2="select max($columns[0]) FROM $tablename";
@@ -28,16 +29,10 @@ $value[0]=$maxcount+1;
 $res=implode(",",$columns);
 $res1=implode("','",$value);
 
-
-
-
 $sqlquery = "Insert into $tablename VALUES ('$res1')";
 echo $sqlquery;
-
-if($conn->query($sqlquery)) {
-    echo "Added into database";
-}
-else
-{
-    echo "Failed";
+if($conn->query($sqlquery)){
+    echo "<br>Added into database";
+} else{
+    echo "<br>Failed";
 }
