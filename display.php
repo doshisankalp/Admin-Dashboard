@@ -6,6 +6,7 @@
     <script language="JavaScript" src="./js/DisplayLib.js"></script>
     <script language="JavaScript" src="./js/EditLib.js"></script>
     <script language="JavaScript" src="./js/UpdateLib.js"></script>
+    <link rel="stylesheet" href="./css/pure-min.css">
 </head>
 <body style="margin: 0px;">
 <header> <?php include("./header.php"); ?> </header>
@@ -34,11 +35,17 @@
         <option value="religion">Religion</option>
         <option value="world">World</option>
     </select>
+
+
 <form>
-    <input type="number" id="numrow" placeholder="Number of rows">
+    <input type="number" id="numrow" placeholder="Rows = 10">
     <button type="button" onclick="show(0)">Display</button><br/><br/>
 
-    <button type="button" onclick="toggleVisibility(document.getElementById('insert'));toggleVisibility(document.getElementById('main-form'));"  >Insert / Add Data</button><br/><br/>
+<!--    <button type="button" onclick="toggleVisibility(document.getElementById('insert'));toggleVisibility(document.getElementById('main-form'));"  >Insert / Add Data</button><br/><br/>-->
+
+    <button type="button" onclick="addRows()"  >Insert / Add Data</button><br/><br/>
+
+
 
     <button type="button" onclick="show(-1)">Previous</button>
     <button type="button" onclick="show(1)">Next</button>
@@ -47,7 +54,7 @@
 </form>
 </div>
 
-<div id="display"></div>
+<div id="display"> </div>
 
 </div>
 <footer> <?php include("./footer.php"); ?> </footer>
