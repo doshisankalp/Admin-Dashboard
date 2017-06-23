@@ -2,7 +2,7 @@
  * Created by omkar on 9/6/17.
  */
 importScripts("DisplayLib");
-function updateTable(emp_no,qText,primaryName) {
+function updateTable(value,qText,primaryName) {
 
     var xhttp;
 
@@ -15,14 +15,14 @@ function updateTable(emp_no,qText,primaryName) {
 
     xhttp.open("POST", "./php/update.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("tblnm="+tablename+"&pkm="+primaryName+'&val=' + emp_no+'&qText='+qText);
+    xhttp.send("tablename="+tablename+"&primary="+primaryName+'&val=' + value+'&qText='+qText);
 
 
 }
 
 function deleteRow(i,z){
-    alert(z);
-    var emp_no = document.getElementById(i+"_"+z).innerText;
+
+    var key = document.getElementById(i+"_"+z).innerText;
 
     var xhttp;
 
@@ -35,7 +35,7 @@ function deleteRow(i,z){
 
     xhttp.open("POST", "./php/delete.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    alert(emp_no+z+tablename);
-    xhttp.send('emp_no=' + emp_no+'&pk='+z+'&tbln='+tablename);
+
+    xhttp.send('key=' + key+'&primary='+z+'&tablename='+tablename);
     show(0);
 }

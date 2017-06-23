@@ -48,7 +48,7 @@ function show(direction) {
                 for(var j=0;j<columns.length; j++) {
                     tablestr += "<td id='" + i + "_"+columns[j]+"' onclick='edit(this)'>" + jsonrows[i][j] + "</td>";
                 }
-                    tablestr += "<td onclick='deleteRow("+i+",\""+columns[0]+"\")'>X</td>";
+                    tablestr += "<td onclick='deleteRow("+i+",\""+columns[0]+"\")'><img src=\"./images/delete.png\" height=\"25\" width=\"25\"></td>";
                     tablestr += "</tr>"
                 }
                 tablestr += "</table>";

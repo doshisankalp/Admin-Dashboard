@@ -7,11 +7,11 @@
  */
 include("connectdb.php");
 
-$emp_no=$_POST['emp_no'];
-$pkm = $_POST['pk'];
-$tblnm = $_POST['tbln'];
+$key=$_POST['key'];
+$primary = $_POST['primary'];
+$tablename = $_POST['tablename'];
 
-$sqlquery = "DELETE FROM $tblnm WHERE $pkm=$emp_no";
+$sqlquery = "DELETE FROM $tablename WHERE $primary=$key";
 
 if (!empty($conn)) {
     $result = mysqli_query($conn, $sqlquery);
