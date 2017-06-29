@@ -1,41 +1,45 @@
-/**
- * Created by omkar on 9/6/17.
- */
 importScripts("DisplayLib");
-function updateTable(value,qText,primaryName) {
-
-    var xhttp;
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+/**
+ * @param {string} newTableData
+ * @param {string} data
+ * @param {string} provisionedThroughput
+ * @return {undefined}
+ */
+function updateTable(newTableData, data, provisionedThroughput) {
+    var xhr;
+    /** @type {XMLHttpRequest} */
+    xhr = new XMLHttpRequest;
+    /**
+     * @return {undefined}
+     */
+    xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            //CHECKING IF SUCCESS
         }
     };
-
-    xhttp.open("POST", "./php/update.php");
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("tablename="+tablename+"&primary="+primaryName+'&val=' + value+'&qText='+qText);
-
-
+    xhr.open("POST", "./php/update.php");
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("tablename=" + tablename + "&primary=" + provisionedThroughput + "&val=" + newTableData + "&qText=" + data);
 }
-
-function deleteRow(i,z){
-
-    var key = document.getElementById(i+"_"+z).innerText;
-
-    var xhttp;
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+/**
+ * @param {string} item
+ * @param {string} index
+ * @return {undefined}
+ */
+function deleteRow(item, index) {
+    var innerText = document.getElementById(item + "_" + index).innerText;
+    var ajax;
+    /** @type {XMLHttpRequest} */
+    ajax = new XMLHttpRequest;
+    /**
+     * @return {undefined}
+     */
+    ajax.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            //CHECKING IF SUCCESS
         }
     };
-
-    xhttp.open("POST", "./php/delete.php");
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xhttp.send('key=' + key+'&primary='+z+'&tablename='+tablename);
+    ajax.open("POST", "./php/delete.php");
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.send("key=" + innerText + "&primary=" + index + "&tablename=" + tablename);
     show(0);
 }
+;

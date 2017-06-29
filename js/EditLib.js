@@ -1,17 +1,33 @@
 var x;
-
-function set(z,iniText) {
-    x = z.parentElement;
-    var id = x.id.substr(0,x.id.indexOf("_"));
-    var s = x.id.substr(x.id.indexOf("_")+1)+"=\"" + z.value.toString()+"\"";
-    if(z.value != iniText){
-        updateTable(x.parentElement.firstChild.innerText,s,x.parentElement.id);
+/**
+ * @param {Element} self
+ * @param {?} value
+ * @return {undefined}
+ */
+function set(self, value) {
+    x = self.parentElement;
+    var id = x.id.substr(0, x.id.indexOf("_"));
+    /** @type {string} */
+    var r20 = x.id.substr(x.id.indexOf("_") + 1) + '="' + self.value.toString() + '"';
+    if (self.value != value) {
+        updateTable(x.parentElement.firstChild.innerText, r20, x.parentElement.id);
     }
-    z.parentElement.onclick = (function(n){return function(){edit(n);};})(x);
-    z.parentElement.innerHTML = z.value;
+    self.parentElement.onclick = function(file) {
+        return function() {
+            edit(file);
+        };
+    }(x);
+    self.parentElement.innerHTML = self.value;
 }
-function edit(z){
-    z.innerHTML = "<input onblur='set(this,\""+z.innerText+"\")' type='text' value='"+z.innerText+"'>";
-    z.firstChild.focus();
-    z.onclick = "";
+/**
+ * @param {Element} el
+ * @return {undefined}
+ */
+function edit(el) {
+    /** @type {string} */
+    el.innerHTML = "<textarea style='height: " + el.clientHeight + "px;width: " + el.clientWidth + "px' onblur='set(this,\"" + el.innerText + "\")'>" + el.innerText + "</textarea>";
+    el.firstChild.focus();
+    /** @type {string} */
+    el.onclick = "";
 }
+;

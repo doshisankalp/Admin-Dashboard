@@ -1,129 +1,174 @@
-/**
- * Created by omkar on 9/6/17.
- */
-
-var startindex=0,numrow=10;
+/** @type {number} */
+var startindex = 0;
+/** @type {number} */
+var numrow = 10;
+/** @type {string} */
 var searching = "";
 var tablename;
 var columns;
-
-function settablename(temp) {
-    tablename=temp;
-    startindex=0;
-}
-
-function initSearch(search){
+/**
+ * @param {number} dataAndEvents
+ * @return {undefined}
+ */
+function settablename(dataAndEvents) {
+    /** @type {number} */
+    tablename = dataAndEvents;
+    /** @type {number} */
     startindex = 0;
-    searching = search;
 }
-
+/**
+ * @param {string} dataAndEvents
+ * @return {undefined}
+ */
+function initSearch(dataAndEvents) {
+    /** @type {number} */
+    startindex = 0;
+    /** @type {string} */
+    searching = dataAndEvents;
+}
+/**
+ * @return {undefined}
+ */
 function clearSearch() {
+    /** @type {string} */
     searching = "";
+    /** @type {number} */
     startindex = 0;
+    /** @type {string} */
     document.getElementById("searchBox").value = "";
 }
-
-function show(direction) {
-    if(document.getElementById("numrow").value!='') {
+/**
+ * @param {number} positions
+ * @return {undefined}
+ */
+function show(positions) {
+    if (document.getElementById("numrow").value != "") {
+        /** @type {number} */
         numrow = parseInt(document.getElementById("numrow").value);
     }
-    var xhttp;
-    if(direction==1) {
-        startindex=startindex+numrow;
-    } else if(direction==-1) {
-        if(startindex>=0) {
-            startindex = startindex - numrow;
+    var ajax;
+    if (positions == 1) {
+        startindex = startindex + numrow;
+    } else {
+        if (positions == -1) {
+            if (startindex >= 0) {
+                /** @type {number} */
+                startindex = startindex - numrow;
+            }
         }
     }
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    /** @type {XMLHttpRequest} */
+    ajax = new XMLHttpRequest;
+    /**
+     * @return {undefined}
+     */
+    ajax.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            if(this.responseText == ' '){
+            if (this.responseText == " ") {
+                /** @type {string} */
                 document.getElementById("display").innerHTML = "0 Results";
-            }
-            else {
-                var jsonrows = JSON.parse(this.responseText);
-                columns=jsonrows[0];
-                jsonrows = jsonrows[1].rows;
-                var tablestr = "<table id=\"dbtable\" class='pure-table pure-table-bordered pure-table-striped'>";
-
-                for(var j=0;j<columns.length; j++) {
-                    tablestr += "<th>" + columns[j] + "</th>";
+            } else {
+                /** @type {*} */
+                var codeSegments = JSON.parse(this.responseText);
+                columns = codeSegments[0];
+                codeSegments = codeSegments[1].rows;
+                /** @type {string} */
+                var xhtml = "<table id=\"dbtable\" class='pure-table pure-table-bordered pure-table-striped'>";
+                /** @type {number} */
+                var j = 0;
+                for (;j < columns.length;j++) {
+                    xhtml += "<th>" + columns[j] + "</th>";
                 }
-                tablestr += "<th><b>Delete</b></th>";
-                for (var i = 0; i < jsonrows.length; i++) {
-                    tablestr += "<tr id='"+columns[0]+"'>";
-
-
-
-                for(var j=0;j<columns.length; j++) {
-                    tablestr += "<td id='" + i + "_"+columns[j]+"' onclick='edit(this)'>" + jsonrows[i][j] + "</td>";
+                xhtml += "<th><b>Delete</b></th>";
+                /** @type {number} */
+                var i = 0;
+                for (;i < codeSegments.length;i++) {
+                    xhtml += "<tr id='" + columns[0] + "'>";
+                    /** @type {number} */
+                    j = 0;
+                    for (;j < columns.length;j++) {
+                        xhtml += "<td id='" + i + "_" + columns[j] + "' onclick='edit(this)'>" + codeSegments[i][j] + "</td>";
+                    }
+                    xhtml += "<td onclick='deleteRow(" + i + ',"' + columns[0] + '")\'><img src="./images/delete.png" height="25" width="25"></td>';
+                    xhtml += "</tr>";
                 }
-                    tablestr += "<td onclick='deleteRow("+i+",\""+columns[0]+"\")'><img src=\"./images/delete.png\" height=\"25\" width=\"25\"></td>";
-                    tablestr += "</tr>"
-                }
-                tablestr += "</table>";
-                document.getElementById("display").innerHTML = tablestr;
+                xhtml += "</table>";
+                /** @type {string} */
+                document.getElementById("display").innerHTML = xhtml;
             }
         }
-
     };
-
-    xhttp.open("POST", "./php/display.php");
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('tablename='+tablename+'&startindex=' + startindex + '&numrow=' + numrow + '&searchQ='+searching);
-
+    ajax.open("POST", "./php/display.php");
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.send("tablename=" + tablename + "&startindex=" + startindex + "&numrow=" + numrow + "&searchQ=" + searching);
 }
-
-var toggleVisibility = function(element) {
-    if(element.style.display=='block'){
-        element.style.display='none';
+/**
+ * @param {Element} elm
+ * @return {undefined}
+ */
+var toggleVisibility = function(elm) {
+    if (elm.style.display == "block") {
+        /** @type {string} */
+        elm.style.display = "none";
     } else {
-        element.style.display='block';
+        /** @type {string} */
+        elm.style.display = "block";
     }
 };
-
+/**
+ * @return {undefined}
+ */
 function addRows() {
-    var table = document.getElementById("dbtable");
-    var inrhtml = table.innerHTML;
-    var toAdd = "<tr><td></td>";
-    for(var j=1;j<columns.length; j++) {
-        //tablestr += "<th>" + columns[j] + "</th>";
-        toAdd += "<td><input id='"+columns[j]+"' type='text' placeholder='"+columns[j]+"'></td>";
+    /** @type {(HTMLElement|null)} */
+    var node = document.getElementById("dbtable");
+    /** @type {string} */
+    var text = node.innerHTML;
+    /** @type {string} */
+    var token_secret = "<tr><td></td>";
+    /** @type {number} */
+    var i = 1;
+    for (;i < columns.length;i++) {
+        token_secret += "<td><input id='" + columns[i] + "' type='text' placeholder='" + columns[i] + "'></td>";
     }
-    toAdd += "<td><img onclick='insertData()' src='./images/tick.png' height=\"25\" width=\"25\"></td></tr>";
-    var z = inrhtml.indexOf("</tr>")+5;
-    var temp = inrhtml.substr(0,z);
-    temp += toAdd;
-    temp += inrhtml.substr(z);
-    //alert(temp);
-    table.innerHTML = temp;
+    token_secret += "<td><img onclick='insertData()' src='./images/tick.png' height=\"25\" width=\"25\"></td></tr>";
+    /** @type {number} */
+    var index = text.indexOf("</tr>") + 5;
+    /** @type {string} */
+    var key = text.substr(0, index);
+    key += token_secret;
+    key += text.substr(index);
+    /** @type {string} */
+    node.innerHTML = key;
 }
-
+/**
+ * @return {undefined}
+ */
 function insertData() {
-    var query="";
-
-    for (var j=1;j<columns.length;j++){
-        query+=columns[j]+"="+document.getElementById(columns[j]).value+"&";
+    /** @type {string} */
+    var string = "";
+    /** @type {number} */
+    var i = 1;
+    for (;i < columns.length;i++) {
+        string += columns[i] + "=" + document.getElementById(columns[i]).value + "&";
     }
-    var l=query.length-1;
-    var query=query.substr(0,l);
-
-    var xhttp;
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    /** @type {number} */
+    var length = string.length - 1;
+    /** @type {string} */
+    string = string.substr(0, length);
+    var ajax;
+    /** @type {XMLHttpRequest} */
+    ajax = new XMLHttpRequest;
+    /**
+     * @return {undefined}
+     */
+    ajax.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            //CHECKING IF SUCCESS
             alert(this.responseText);
             show(0);
         }
     };
-
-    xhttp.open("POST", "./php/adddata.php");
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("tablename="+tablename+"&"+query);
-
-
-
+    ajax.open("POST", "./php/adddata.php");
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.send("tablename=" + tablename + "&" + string);
 }
+;
