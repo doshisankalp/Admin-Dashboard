@@ -21,11 +21,12 @@
 <form>
 <span style="display:block; height: 20px;"></span>
 
-    <input type="number" id="numrow" placeholder="Rows = 10" onchange="show(0)">
+    <input type="number" id="numrow" value=10 placeholder="Rows = 10" onchange="show(0)">
+
 <span style="display:inline-block; width: 50px;"></span>
 
     <button type="button" onclick="addRows()"  >Insert / Add Data</button>
-<span style="display:block; height: 20px;"></span>
+<span style="display:block; height: 10px;"></span>
 
     <button type="button" onclick="show(-1)">Previous</button>
 <span style="display:inline-block; width: 40px;"></span>
