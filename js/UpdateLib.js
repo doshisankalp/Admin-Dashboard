@@ -11,7 +11,7 @@ function updateTable(value,qText,primaryName) {
         if (this.readyState == 4 && this.status == 200) {
             //CHECKING IF SUCCESS
         }
-    }
+    };
 
     xhttp.open("POST", "./php/update.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -31,7 +31,7 @@ function deleteRow(i,z){
         if (this.readyState == 4 && this.status == 200) {
             //CHECKING IF SUCCESS
         }
-    }
+    };
 
     xhttp.open("POST", "./php/delete.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

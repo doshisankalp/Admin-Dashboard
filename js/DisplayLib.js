@@ -9,7 +9,9 @@ var columns;
 
 function settablename(temp) {
     tablename=temp;
+    startindex=0;
 }
+
 function initSearch(search){
     startindex = 0;
     searching = search;
@@ -48,7 +50,7 @@ function show(direction) {
                 for(var j=0;j<columns.length; j++) {
                     tablestr += "<th>" + columns[j] + "</th>";
                 }
-                tablestr += "<th>Delete</th>";
+                tablestr += "<th><b>Delete</b></th>";
                 for (var i = 0; i < jsonrows.length; i++) {
                     tablestr += "<tr id='"+columns[0]+"'>";
 
@@ -65,7 +67,7 @@ function show(direction) {
             }
         }
 
-    }
+    };
 
     xhttp.open("POST", "./php/display.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -116,7 +118,7 @@ function insertData() {
             alert(this.responseText);
             show(0);
         }
-    }
+    };
 
     xhttp.open("POST", "./php/adddata.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
