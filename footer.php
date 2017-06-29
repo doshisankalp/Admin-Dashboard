@@ -35,10 +35,6 @@
         color:white;
     }
 
-    .active {
-        background-color: #424242;
-    }
-
     .page-footer{
         position:relative;
         bottom:0;

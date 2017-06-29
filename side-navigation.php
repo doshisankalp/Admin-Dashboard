@@ -1,4 +1,3 @@
-<div>
 <style scoped>
     body {
         margin: 0;
@@ -36,9 +35,27 @@
 
 
 <ul>
-    <li><a class="active" href="./index1.php">Home</a></li>
+    <li><a href="index.php">Home</a></li>
     <li><a href="./display.php">Database Operation</a></li>
+<li>
+    <select onclick="settablename(this.value);show(0);" size="10" style="max-width: 350%;">
+        <option selected>Select Table</option>
+        <option value="businesses">Businesses</option>
+        <option value="city">City</option>
+        <option value="jobs">Jobs</option>
+        <option value="language">Language</option>
+        <option value="name_group">Name Group</option>
+        <option value="names">Names</option>
+        <option value="religion">Religion</option>
+        <option value="world">World</option>
+    </select>
+</li>
     <li><a href="#">phpMyAdmin</a></li>
     <li><a href="./SystemStats.php">Server Stats</a></li>
+    <span style="display:block; height: 90px;"></span>
+
+    <li><a href="#"><?php
+            include_once("./php/session.php");
+            ?> <b>Logged In User</b></a></li>
+
 </ul>
-</div>

@@ -10,53 +10,46 @@
 </head>
 <body style="margin: 0px;">
 <header> <?php include("./header.php"); ?> </header>
+
 <div><?php include("./navigation.php"); ?></div>
 <div><?php include("./side-navigation.php"); ?></div>
 <div style="margin-left:25%">
 
 
-<div id="insert" style="display:none;">
-
-    <?php include("./add-job.php"); ?>
-    <br>
-    <button type="button" onclick="toggleVisibility(document.getElementById('insert'));toggleVisibility(document.getElementById('main-form'));">Cancel</button>
-</div>
-
 <div id="main-form" style="display:block">
 
-    <select onchange="settablename(this.value)">
-        <option selected>Select Table</option>
-        <option value="businesses">Businesses</option>
-        <option value="city">City</option>
-        <option value="jobs">Jobs</option>
-        <option value="language">Language</option>
-        <option value="name_group">Name Group</option>
-        <option value="names">Names</option>
-        <option value="religion">Religion</option>
-        <option value="world">World</option>
-    </select>
-
-
 <form>
-    <input type="number" id="numrow" placeholder="Rows = 10">
-    <button type="button" onclick="show(0)">Display</button><br/><br/>
+<span style="display:block; height: 20px;"></span>
 
-<!--    <button type="button" onclick="toggleVisibility(document.getElementById('insert'));toggleVisibility(document.getElementById('main-form'));"  >Insert / Add Data</button><br/><br/>-->
+    <input type="number" id="numrow" placeholder="Rows = 10" onchange="show(0)">
+<span style="display:inline-block; width: 50px;"></span>
 
-    <button type="button" onclick="addRows()"  >Insert / Add Data</button><br/><br/>
-
-
+    <button type="button" onclick="addRows()"  >Insert / Add Data</button>
+<span style="display:block; height: 20px;"></span>
 
     <button type="button" onclick="show(-1)">Previous</button>
+<span style="display:inline-block; width: 40px;"></span>
+
     <button type="button" onclick="show(1)">Next</button>
+<span style="display:inline-block; width: 50px;"></span>
+
     <input type="text" id="searchBox" placeholder="Search" onchange="initSearch(this.value);show(0)">
-    <button type="button" onclick="clearSearch();show(0)">Clear</button>
+    <button type="button" onclick="clearSearch();show(0)">Clear Search</button>
+<span style="display:block; height: 20px;"></span>
+
 </form>
 </div>
 
-<div id="display"> </div>
+<div id="display">
+    <span style="display:block; height: 350px;"></span>
 
 </div>
+
+
+</div>
+
+<span style="display:block; height: 20px;"></span>
 <footer> <?php include("./footer.php"); ?> </footer>
+
 </body>
 </html>

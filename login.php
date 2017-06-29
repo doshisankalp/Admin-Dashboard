@@ -12,8 +12,7 @@ include("./php/login.php");
 <body>
 <div class="container">
 
-    <header> <?php include("../header.php"); ?> </header>
-    <nav>    <?php include("../side-navigation.php"); ?> </nav>
+    <header> <?php include("./header.php"); ?> </header>
 
     <article>
         <style>
@@ -117,8 +116,6 @@ include("./php/login.php");
         ?>
         <br>
 
-
-
         <form class="modal-content animate" method="post">
             <h2>LOGIN</h2>
             <label><b>EMAIL ID</b></label>
@@ -133,11 +130,7 @@ include("./php/login.php");
 
 </div>
 
-
-
-
-
-<footer> <?php include("../footer.php"); ?> </footer>
+<footer> <?php include("./footer.php"); ?> </footer>
 
 </body>
 

@@ -2,9 +2,7 @@
 
 session_start();
 
-/**
- * @return int
- */
+
 function login()
 {   include("connectdb.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

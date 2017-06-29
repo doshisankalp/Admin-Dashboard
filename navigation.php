@@ -1,5 +1,5 @@
-<div>
-    <style scoped>
+
+<style scoped>
         ul {
             list-style-type: none;
             margin: 0;
@@ -32,16 +32,13 @@
         .active {
             background-color: #4CAF50;
         }
-    </style>
+</style>
 
 
 
 <ul>
     <li><a class="active" href="#home">Home</a></li>
     <li><a href="#news">News</a></li>
-    <li style="float:right"><a href="#"><?php
-            include_once("./php/session.php");
-    ?> Logged In User</a></li>
-    <li style="float:right"><a href="./logout.php">Logout</a></li>
+    <li style="float:right"><a href="./logout.php"><b>Logout</b></a></li>
 </ul>
-</div>
+
