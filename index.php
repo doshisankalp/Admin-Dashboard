@@ -17,7 +17,9 @@
 <span style="display:block; height: 50px;"></span>
 
 Please Login to continue. If you are new, ask the Administrator to enroll you into the website members.
-<h2><a href="./login.php">"Login"</a></h2>
+        <span style="display:block; height: 20px;"></span>
+
+        <a href="./login.php"><button class="pure-button pure-button-active">Login</button></a>
 
 <span style="display:block; height: 250px;"></span>
 

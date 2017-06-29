@@ -37,8 +37,8 @@
 
 
 <ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a href="#news">News</a></li>
-    <li style="float:right"><a href="./logout.php"><b>Logout</b></a></li>
+    <li><a class="active" href="./index.php">Home</a></li>
+
+    <li style="float:right"><a href="logout.php"><b>Logout</b></a></li>
 </ul>
 

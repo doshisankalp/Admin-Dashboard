@@ -6,7 +6,6 @@ include("./php/login.php");
 
 <head>
     <title>Login - Neeti Solutions</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -52,22 +51,6 @@ include("./php/login.php");
                 padding: 16px;
             }
 
-
-            /* The Modal (background) */
-            .modal {
-                display: none; /* Hidden by default */
-                position: fixed; /* Stay in place */
-                z-index: 1; /* Sit on top */
-                left: 0;
-                top: 0;
-                width: 100%; /* Full width */
-                height: 100%; /* Full height */
-                overflow: auto; /* Enable scroll if needed */
-                background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-                padding-top: 60px;
-            }
-
             /* Modal Content/Box */
             .modal-content {
                 background-color: #fefefe;
@@ -76,11 +59,6 @@ include("./php/login.php");
                 width: 80%; /* Could be more or less, depending on screen size */
             }
 
-            .close:hover,
-            .close:focus {
-                color: red;
-                cursor: pointer;
-            }
             span.psw {
                 float: right;
                 padding-top: 16px;

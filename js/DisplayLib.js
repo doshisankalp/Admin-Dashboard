@@ -45,7 +45,7 @@ function show(direction) {
                 var jsonrows = JSON.parse(this.responseText);
                 columns=jsonrows[0];
                 jsonrows = jsonrows[1].rows;
-                var tablestr = "<table id=\"dbtable\" class='pure-table'>";
+                var tablestr = "<table id=\"dbtable\" class='pure-table pure-table-bordered pure-table-striped'>";
 
                 for(var j=0;j<columns.length; j++) {
                     tablestr += "<th>" + columns[j] + "</th>";

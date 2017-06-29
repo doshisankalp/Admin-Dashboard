@@ -39,7 +39,7 @@
     <li><a href="./display.php">Database Operation</a></li>
 <li>
     <select onclick="settablename(this.value);show(0);" size="10" style="max-width: 350%;">
-        <option selected>Select Table</option>
+        <option selected>Select Table from below list :</option>
         <option value="businesses">Businesses</option>
         <option value="city">City</option>
         <option value="jobs">Jobs</option>
@@ -50,7 +50,7 @@
         <option value="world">World</option>
     </select>
 </li>
-    <li><a href="#">phpMyAdmin</a></li>
+    <li><a href="phpsysinfo.php">PHP System Info</a></li>
     <li><a href="./SystemStats.php">Server Stats</a></li>
     <span style="display:block; height: 90px;"></span>
 
